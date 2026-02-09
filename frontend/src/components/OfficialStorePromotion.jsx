@@ -28,6 +28,10 @@ export default function OfficialStorePromotion() {
         return new Intl.NumberFormat('id-ID').format(value);
     };
 
+    const formatCurrency = (value) => {
+        return new Intl.NumberFormat('id-ID', { style: 'currency', currency: 'IDR', minimumFractionDigits: 0 }).format(value);
+    };
+
     const formatPercent = (value) => {
         return `${value.toFixed(2)}%`;
     };
@@ -39,7 +43,7 @@ export default function OfficialStorePromotion() {
     const metrics = {
         traffic: { value: 125430, growth_mom: 8.5, growth_yoy: 15.2 },
         cvr: { value: 12.5, growth_mom: 1.2, growth_yoy: 3.5 }, // Conversion Rate %
-        promo_total: { value: 24, growth_mom: 4, growth_yoy: 8 }, // Total Promotions run
+        promo_total: { value: 1250000000, growth_mom: 4, growth_yoy: 8 }, // Total Promotion Value
         activity_rate: { value: 35.8, growth_mom: 5.2, growth_yoy: 7.1 } // % of items on promo
     };
 
@@ -146,10 +150,9 @@ export default function OfficialStorePromotion() {
 
                 {/* Promotion Total */}
                 <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
-                    <h3 className="text-sm font-medium text-gray-500 mb-1 uppercase tracking-wider">Promotion Total</h3>
+                    <h3 className="text-sm font-medium text-gray-500 mb-1 uppercase tracking-wider">Promotion Total Value</h3>
                     <div className="flex items-baseline mb-4">
-                        <span className="text-2xl font-bold text-gray-900">{metrics.promo_total.value}</span>
-                        <span className="ml-2 text-sm text-gray-500">Events</span>
+                        <span className="text-2xl font-bold text-gray-900">{formatCurrency(metrics.promo_total.value)}</span>
                     </div>
                     <div className="space-y-1">
                         <GrowthIndicator label="MoM" value={metrics.promo_total.growth_mom} />
@@ -233,3 +236,4 @@ export default function OfficialStorePromotion() {
         </div>
     );
 }
+// Updated Component
