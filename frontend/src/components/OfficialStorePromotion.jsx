@@ -10,6 +10,8 @@ export default function OfficialStorePromotion() {
         end: new Date(2026, 0, 28)     // 28 Jan 2026
     });
     const [selectedStore, setSelectedStore] = useState('All Stores');
+    const [selectedPromoType, setSelectedPromoType] = useState('All Types');
+    const [searchQuery, setSearchQuery] = useState('');
 
     const handleDateApply = (start, end) => {
         if (start && end) {
@@ -38,6 +40,7 @@ export default function OfficialStorePromotion() {
 
     // Mock Data
     const stores = ['All Stores', 'Grand Indonesia', 'Plaza Indonesia', 'Senayan City', 'Pondok Indah Mall', 'Kota Kasablanka', 'Central Park', 'Gandaria City'];
+    const promoTypes = ['All Types', 'Bundling', 'Discount', 'Voucher', 'Purchase with purchase'];
 
     // Aggregated Metrics Mock
     const metrics = {
@@ -58,11 +61,20 @@ export default function OfficialStorePromotion() {
     // Promotion Performance Table Mock
     const promoData = [
         { id: 1, name: 'New Year Sale', type: 'Discount', store: 'All Stores', start_date: '2026-01-01', end_date: '2026-01-07', traffic: 45000, orders: 5400, cvr: 12.0, revenue: 850000000 },
-        { id: 2, name: 'Payday Special', type: 'Bundle', store: 'Grand Indonesia', start_date: '2026-01-25', end_date: '2026-01-28', traffic: 12000, orders: 1800, cvr: 15.0, revenue: 320000000 },
-        { id: 3, name: 'Weekend Flash Sale', type: 'Flash Sale', store: 'Kota Kasablanka', start_date: '2026-01-10', end_date: '2026-01-11', traffic: 8500, orders: 1100, cvr: 12.9, revenue: 150000000 },
+        { id: 2, name: 'Payday Special', type: 'Bundling', store: 'Grand Indonesia', start_date: '2026-01-25', end_date: '2026-01-28', traffic: 12000, orders: 1800, cvr: 15.0, revenue: 320000000 },
+        { id: 3, name: 'Weekend Flash Sale', type: 'Purchase with purchase', store: 'Kota Kasablanka', start_date: '2026-01-10', end_date: '2026-01-11', traffic: 8500, orders: 1100, cvr: 12.9, revenue: 150000000 },
         { id: 4, name: 'Member Exclusive', type: 'Voucher', store: 'Plaza Indonesia', start_date: '2026-01-15', end_date: '2026-01-31', traffic: 15000, orders: 2500, cvr: 16.6, revenue: 450000000 },
         { id: 5, name: 'Clearance', type: 'Discount', store: 'Central Park', start_date: '2026-01-01', end_date: '2026-01-31', traffic: 22000, orders: 2200, cvr: 10.0, revenue: 280000000 },
+        { id: 6, name: 'Buy 1 Get 1', type: 'Bundling', store: 'Senayan City', start_date: '2026-01-05', end_date: '2026-01-10', traffic: 18000, orders: 3200, cvr: 17.8, revenue: 210000000 },
+        { id: 7, name: 'Gift with Purchase', type: 'Purchase with purchase', store: 'Gandaria City', start_date: '2026-01-20', end_date: '2026-01-25', traffic: 10500, orders: 950, cvr: 9.0, revenue: 120000000 },
     ];
+
+    const filteredPromoData = promoData.filter(promo => {
+        const storeMatch = selectedStore === 'All Stores' || promo.store === selectedStore;
+        const typeMatch = selectedPromoType === 'All Types' || promo.type === selectedPromoType;
+        const searchMatch = promo.name.toLowerCase().includes(searchQuery.toLowerCase());
+        return storeMatch && typeMatch && searchMatch;
+    });
 
     const GrowthIndicator = ({ label, value }) => (
         <div className="flex items-center text-xs mt-1">
@@ -79,6 +91,40 @@ export default function OfficialStorePromotion() {
                 <h1 className="text-3xl font-bold text-gray-900">Official Store Promotion</h1>
                 
                 <div className="flex flex-col sm:flex-row gap-4">
+                    {/* Search Filter */}
+                    <div className="relative">
+                        <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                            <svg className="h-5 w-5 text-gray-400" viewBox="0 0 20 20" fill="currentColor">
+                                <path fillRule="evenodd" d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z" clipRule="evenodd" />
+                            </svg>
+                        </div>
+                        <input
+                            type="text"
+                            placeholder="Search..."
+                            value={searchQuery}
+                            onChange={(e) => setSearchQuery(e.target.value)}
+                            className="pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                        />
+                    </div>
+
+                    {/* Promo Type Filter */}
+                    <div className="relative">
+                        <select
+                            value={selectedPromoType}
+                            onChange={(e) => setSelectedPromoType(e.target.value)}
+                            className="appearance-none bg-white border border-gray-300 text-gray-700 py-2 px-4 pr-8 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 cursor-pointer"
+                        >
+                            {promoTypes.map((type) => (
+                                <option key={type} value={type}>{type}</option>
+                            ))}
+                        </select>
+                        <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+                            <svg className="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                                <path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/>
+                            </svg>
+                        </div>
+                    </div>
+
                     {/* Store Filter */}
                     <div className="relative">
                         <select
@@ -212,7 +258,7 @@ export default function OfficialStorePromotion() {
                             </tr>
                         </thead>
                         <tbody className="bg-white divide-y divide-gray-200">
-                            {promoData.map((promo) => (
+                            {filteredPromoData.map((promo) => (
                                 <tr key={promo.id} className="hover:bg-gray-50 transition-colors">
                                     <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{promo.name}</td>
                                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">

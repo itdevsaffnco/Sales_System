@@ -4,6 +4,7 @@ import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContaine
 
 export default function OfficialStoreStock() {
     const [selectedStore, setSelectedStore] = useState('All Stores');
+    const [searchQuery, setSearchQuery] = useState('');
 
     const formatNumber = (value) => {
         return new Intl.NumberFormat('id-ID').format(value);
@@ -51,6 +52,13 @@ export default function OfficialStoreStock() {
             default: return 'bg-gray-100 text-gray-800';
         }
     };
+
+    const filteredStockData = skuStockData.filter(item => {
+        const storeMatch = selectedStore === 'All Stores' || item.store === selectedStore;
+        const searchMatch = item.name.toLowerCase().includes(searchQuery.toLowerCase()) || 
+                            item.code.toLowerCase().includes(searchQuery.toLowerCase());
+        return storeMatch && searchMatch;
+    });
 
     return (
         <div className="flex-1 bg-gray-50 p-8 overflow-y-auto h-full pb-64">
@@ -195,7 +203,7 @@ export default function OfficialStoreStock() {
                             </tr>
                         </thead>
                         <tbody className="bg-white divide-y divide-gray-200">
-                            {skuStockData.map((sku, index) => (
+                            {filteredStockData.map((sku, index) => (
                                 <tr key={index} className="hover:bg-gray-50 transition-colors">
                                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500 font-mono">{sku.code}</td>
                                     <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{sku.name}</td>
