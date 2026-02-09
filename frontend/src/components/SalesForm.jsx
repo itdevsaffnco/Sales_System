@@ -1,11 +1,40 @@
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import Sidebar from './Sidebar';
+import OrdersView from './OrdersView';
+import ProductPerformanceView from './ProductPerformanceView';
+import LiveStreamingView from './LiveStreamingView';
+import AffiliateView from './AffiliateView';
+import CRMView from './CRMView';
+import InventoryHealthView from './InventoryHealthView';
+import OperationsHealthView from './OperationsHealthView';
+import AdsView from './AdsView';
+import QuickView from './QuickView';
+import OfficialStoreOverview from './OfficialStoreOverview';
+import OfficialStorePromotion from './OfficialStorePromotion';
+import OfficialStoreStock from './OfficialStoreStock';
+import OfficialStoreCost from './OfficialStoreCost';
+import BDOverview from './BDOverview';
+import BDEcommerce from './BDEcommerce';
+import BDOfflineDistributor from './BDOfflineDistributor';
+import BDDistributorSales from './BDDistributorSales';
+import BDDistributorAccountSKU from './BDDistributorAccountSKU';
+import BDDistributorCoverage from './BDDistributorCoverage';
+import BDDistributorCost from './BDDistributorCost';
+import BDOfflineEvent from './BDOfflineEvent';
+import BDEventSales from './BDEventSales';
+import BDEventProduct from './BDEventProduct';
+import BDEventPromotion from './BDEventPromotion';
+import BDEventCost from './BDEventCost';
+import BDEcommerceMY from './BDEcommerceMY';
 import api from '../api/axios';
 
 export default function SalesForm() {
     const [searchParams] = useSearchParams();
     const channelFromUrl = searchParams.get('channel') || '';
+    const typeFromUrl = searchParams.get('type');
+    const [isSidebarOpen, setIsSidebarOpen] = useState(true);
+
     const onlinePlatforms = [
         'SHOPEE',
         'TOKOPEDIA',
@@ -98,15 +127,89 @@ export default function SalesForm() {
 
     return (
         <div className="flex h-screen bg-gray-100">
-            <Sidebar />
+            <Sidebar isOpen={isSidebarOpen} />
             <div className="flex-1 flex flex-col overflow-hidden">
-                <header className="flex justify-between items-center py-4 px-6 bg-white border-b-4 border-indigo-600">
-                    <h1 className="text-2xl font-semibold text-gray-800">Sales Entry</h1>
+                <header className={`flex justify-between items-center h-16 px-6 bg-white ${(typeFromUrl === 'orders' || typeFromUrl === 'performance' || typeFromUrl === 'livestreaming' || typeFromUrl === 'affiliate' || typeFromUrl === 'crm' || typeFromUrl === 'inventory' || typeFromUrl === 'operations' || typeFromUrl === 'quickview' || typeFromUrl === 'ads' || typeFromUrl === 'bd-overview' || typeFromUrl === 'bd-ecommerce' || typeFromUrl === 'bd-distributor' || typeFromUrl === 'bd-distributor-sales' || typeFromUrl === 'bd-distributor-account' || typeFromUrl === 'bd-distributor-coverage' || typeFromUrl === 'bd-distributor-cost' || typeFromUrl === 'bd-event' || typeFromUrl === 'bd-event-sales' || typeFromUrl === 'bd-event-product' || typeFromUrl === 'bd-event-promotion' || typeFromUrl === 'bd-event-cost' || typeFromUrl === 'bd-ecommerce-my' || typeFromUrl === 'offline-quick-overview' || typeFromUrl === 'offline-mt' || typeFromUrl === 'offline-area-sales' || typeFromUrl === 'offline-store-overview' || typeFromUrl === 'offline-store-promotion' || typeFromUrl === 'offline-store-stock' || typeFromUrl === 'offline-store-cost') ? 'border-b border-gray-200' : 'border-b-4 border-indigo-600'}`}>
+                    <div className="flex items-center">
+                        <button 
+                            onClick={() => setIsSidebarOpen(!isSidebarOpen)}
+                            className="mr-4 p-2 rounded-lg text-gray-600 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200"
+                        >
+                            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
+                            </svg>
+                        </button>
+                        {typeFromUrl !== 'orders' && typeFromUrl !== 'performance' && typeFromUrl !== 'livestreaming' && typeFromUrl !== 'affiliate' && typeFromUrl !== 'crm' && typeFromUrl !== 'inventory' && typeFromUrl !== 'operations' && typeFromUrl !== 'quickview' && typeFromUrl !== 'ads' && typeFromUrl !== 'bd-overview' && typeFromUrl !== 'bd-ecommerce' && typeFromUrl !== 'bd-distributor' && typeFromUrl !== 'bd-distributor-sales' && typeFromUrl !== 'bd-distributor-account' && typeFromUrl !== 'bd-distributor-coverage' && typeFromUrl !== 'bd-distributor-cost' && typeFromUrl !== 'bd-event' && typeFromUrl !== 'bd-event-sales' && typeFromUrl !== 'bd-event-product' && typeFromUrl !== 'bd-event-promotion' && typeFromUrl !== 'bd-event-cost' && typeFromUrl !== 'bd-ecommerce-my' && typeFromUrl !== 'offline-quick-overview' && typeFromUrl !== 'offline-mt' && typeFromUrl !== 'offline-area-sales' && typeFromUrl !== 'offline-store-overview' && typeFromUrl !== 'offline-store-promotion' && typeFromUrl !== 'offline-store-stock' && typeFromUrl !== 'offline-store-cost' && <h1 className="text-2xl font-semibold text-gray-800">Sales Entry</h1>}
+                    </div>
                 </header>
-                <main className="flex-1 overflow-x-hidden overflow-y-auto bg-gray-200">
-                    <div className="container mx-auto px-6 py-8">
-                        <div className="w-full max-w-lg mx-auto bg-white rounded-lg shadow-md p-6">
-                            <form onSubmit={handleSubmit}>
+                
+                {typeFromUrl === 'orders' ? (
+                    <OrdersView />
+                ) : typeFromUrl === 'performance' ? (
+                    <ProductPerformanceView />
+                ) : typeFromUrl === 'livestreaming' ? (
+                    <LiveStreamingView />
+                ) : typeFromUrl === 'affiliate' ? (
+                    <AffiliateView />
+                ) : typeFromUrl === 'ads' ? (
+                    <AdsView />
+                ) : typeFromUrl === 'crm' ? (
+                    <CRMView />
+                ) : typeFromUrl === 'inventory' ? (
+                    <InventoryHealthView />
+                ) : typeFromUrl === 'operations' ? (
+                    <OperationsHealthView />
+                ) : typeFromUrl === 'quickview' ? (
+                    <QuickView />
+                ) : typeFromUrl === 'bd-overview' ? (
+                    <BDOverview />
+                ) : typeFromUrl === 'bd-ecommerce' ? (
+                    <BDEcommerce />
+                ) : typeFromUrl === 'bd-distributor' ? (
+                    <BDOfflineDistributor />
+                ) : typeFromUrl === 'bd-distributor-sales' ? (
+                    <BDDistributorSales />
+                ) : typeFromUrl === 'bd-distributor-account' ? (
+                    <BDDistributorAccountSKU />
+                ) : typeFromUrl === 'bd-distributor-coverage' ? (
+                    <BDDistributorCoverage />
+                ) : typeFromUrl === 'bd-distributor-cost' ? (
+                    <BDDistributorCost />
+                ) : typeFromUrl === 'bd-event' ? (
+                    <BDOfflineEvent />
+                ) : typeFromUrl === 'bd-event-sales' ? (
+                    <BDEventSales />
+                ) : typeFromUrl === 'bd-event-product' ? (
+                    <BDEventProduct />
+                ) : typeFromUrl === 'bd-event-promotion' ? (
+                    <BDEventPromotion />
+                ) : typeFromUrl === 'bd-event-cost' ? (
+                    <BDEventCost />
+                ) : typeFromUrl === 'bd-ecommerce-my' ? (
+                    <BDEcommerceMY />
+                ) : typeFromUrl === 'bd-livestreaming-my' ? (
+                    <LiveStreamingView />
+                ) : typeFromUrl === 'bd-affiliate-my' ? (
+                    <AffiliateView />
+                ) : typeFromUrl === 'offline-quick-overview' ? (
+                    <QuickView />
+                ) : typeFromUrl === 'offline-mt' ? (
+                    <BDOfflineDistributor />
+                ) : typeFromUrl === 'offline-area-sales' ? (
+                    <BDDistributorCoverage />
+                ) : typeFromUrl === 'offline-store-overview' ? (
+                    <OfficialStoreOverview />
+                ) : typeFromUrl === 'offline-store-promotion' ? (
+                    <OfficialStorePromotion />
+                ) : typeFromUrl === 'offline-store-stock' ? (
+                    <OfficialStoreStock />
+                ) : typeFromUrl === 'offline-store-cost' ? (
+                    <OfficialStoreCost />
+                ) : (
+                    <main className="flex-1 overflow-x-hidden overflow-y-auto bg-gray-200">
+                        <div className="container mx-auto px-6 py-8">
+                            <div className="w-full max-w-lg mx-auto bg-white rounded-lg shadow-md p-6">
+                                <form onSubmit={handleSubmit}>
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                     <div className="mb-4">
                                         <label className="block text-gray-700 text-sm font-bold mb-2">Type</label>
@@ -283,6 +386,7 @@ export default function SalesForm() {
                         </div>
                     </div>
                 </main>
+                )}
             </div>
         </div>
     );
