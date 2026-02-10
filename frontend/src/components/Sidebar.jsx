@@ -1,6 +1,6 @@
 import { Link, useLocation } from 'react-router-dom';
 import { useState } from 'react';
-import logo from '../assets/channel/website.svg';
+import logo from '../assets/logo.svg';
 
 const MenuItem = ({ item, depth = 0, expandedGroups, toggleGroup, isActive }) => {
     if (item.type === 'header') {
@@ -34,7 +34,7 @@ const MenuItem = ({ item, depth = 0, expandedGroups, toggleGroup, isActive }) =>
             <div className="mb-1">
                 <button
                     onClick={() => toggleGroup(item.id || item.label)}
-                    className={`flex items-center justify-between w-full px-6 py-2.5 text-sm font-medium transition-colors duration-200 ${
+                    className={`text-left flex items-center justify-between w-full px-6 py-2.5 text-sm font-medium transition-colors duration-200 ${
                         isExpanded ? 'text-gray-900' : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
                     }`}
                     style={{ paddingLeft: depth === 0 ? '1.5rem' : `${depth * 1.5 + 1.5}rem` }}
@@ -86,6 +86,16 @@ const MenuItem = ({ item, depth = 0, expandedGroups, toggleGroup, isActive }) =>
 };
 
 const menuItems = [
+    {
+        type: 'link',
+        label: 'Overview All Channel',
+        to: '/sales?type=overview-all-channel',
+        icon: (
+            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
+            </svg>
+        )
+    },
     {
         type: 'group',
         label: 'Online Sales',
@@ -215,6 +225,7 @@ const menuItems = [
                 },
             ]
         },
+
         { 
             type: 'group', 
             label: 'BD', 
@@ -426,14 +437,18 @@ const menuItems = [
                     ]
                 },
                 {
-                    type: 'link',
+                    type: 'group',
                     label: 'MT',
-                    to: '/sales?type=offline-mt',
                     icon: (
                         <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
                         </svg>
-                    )
+                    ),
+                    children: [
+                        { type: 'link', label: 'Overview', to: '/sales?type=mt-overview' },
+                        { type: 'link', label: 'Distribution Coverage', to: '/sales?type=mt-distribution-coverage' },
+                        { type: 'link', label: 'Cost per Channel', to: '/sales?type=mt-cost-per-channel' },
+                    ]
                 },
                 {
                     type: 'group',
@@ -444,25 +459,53 @@ const menuItems = [
                         </svg>
                     ),
                     children: [
-                        { type: 'channel', label: 'Reseller', channel: 'Reseller under Principal' },
                         {
-                            type: 'group',
-                            label: 'Area Sumatra',
-                            children: ['Sumatra Utara', 'Nanggroe Aceh Darussalam', 'Sumatra Barat', 'Sumatra Selatan', 'Lampung'].map(
-                                (channel) => ({ type: 'channel', label: channel, channel }),
+                            type: 'submenu',
+                            label: 'GT Distributor',
+                            icon: (
+                                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                                </svg>
                             ),
+                            children: [
+                                { type: 'link', label: 'Overview', to: '/sales?type=gt-distributor-overview' },
+                                { type: 'link', label: 'Sales Performance', to: '/sales?type=gt-distributor-sales' },
+                                { type: 'link', label: 'Coverage & SKU', to: '/sales?type=gt-distributor-coverage' },
+                                { type: 'link', label: 'Cost Analysis', to: '/sales?type=gt-distributor-cost' },
+                            ]
+                        },
+                        {
+                            type: 'submenu',
+                            label: 'GT Reseller',
+                            id: 'gt-reseller',
+                            icon: (
+                                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+                                </svg>
+                            ),
+                            children: [
+                                { type: 'link', label: 'Overview', to: '/sales?type=gt-reseller-overview' },
+                                { type: 'link', label: 'Reseller Performance', to: '/sales?type=gt-reseller-performance' },
+                                { type: 'link', label: 'Coverage & Listing', to: '/sales?type=gt-reseller-coverage' },
+                                { type: 'link', label: 'Cost Analysis', to: '/sales?type=gt-reseller-cost' },
+                            ]
                         }
                     ]
                 },
                 {
-                    type: 'link',
-                    label: 'Area Sales & Regional Performance',
-                    to: '/sales?type=offline-area-sales',
+                    type: 'submenu',
+                    label: 'Sales Area',
+                    id: 'sales-area',
                     icon: (
                         <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0121 18.382V7.618a1 1 0 01-1.447-.894L15 7m0 13V7" />
                         </svg>
-                    )
+                    ),
+                    children: [
+                        { type: 'link', label: 'Overview', to: '/sales?type=sales-area-overview' },
+                        { type: 'link', label: 'Performance', to: '/sales?type=sales-area-performance' },
+                        { type: 'link', label: 'Stock & Inventory', to: '/sales?type=sales-area-stock' },
+                    ]
                 }
             ]
         },
@@ -477,7 +520,10 @@ export default function Sidebar({ isOpen }) {
         'Live Streaming': false,
         'Affiliate': false,
         'Offline Sales': false,
+        'MT': false,
         'BD': false,
+        'GT Distributor': false,
+        'gt-reseller': false,
         'bd-livestream': false,
         'bd-affiliate': false
     });

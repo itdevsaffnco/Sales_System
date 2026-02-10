@@ -27,6 +27,23 @@ import BDEventProduct from './BDEventProduct';
 import BDEventPromotion from './BDEventPromotion';
 import BDEventCost from './BDEventCost';
 import BDEcommerceMY from './BDEcommerceMY';
+import MTOverview from './MTOverview';
+import MTDistributionCoverage from './MTDistributionCoverage';
+import MTCostPerChannel from './MTCostPerChannel';
+import OfflineSalesOverview from './OfflineSalesOverview';
+import GTDistributorOverview from './GTDistributorOverview';
+import GTDistributorSales from './GTDistributorSales';
+import GTDistributorCoverage from './GTDistributorCoverage';
+import GTDistributorCost from './GTDistributorCost';
+import GTResellerOverview from './GTResellerOverview';
+import GTResellerPerformance from './GTResellerPerformance';
+import GTResellerCoverage from './GTResellerCoverage';
+import GTResellerCost from './GTResellerCost';
+import SalesAreaOverview from './SalesAreaOverview';
+import SalesAreaPerformance from './SalesAreaPerformance';
+import SalesAreaStock from './SalesAreaStock';
+import GTReseller from './GTReseller';
+import OverviewAllChannel from './OverviewAllChannel';
 import api from '../api/axios';
 
 export default function SalesForm() {
@@ -129,7 +146,7 @@ export default function SalesForm() {
         <div className="flex h-screen bg-gray-100">
             <Sidebar isOpen={isSidebarOpen} />
             <div className="flex-1 flex flex-col overflow-hidden">
-                <header className={`flex justify-between items-center h-16 px-6 bg-white ${(typeFromUrl === 'orders' || typeFromUrl === 'performance' || typeFromUrl === 'livestreaming' || typeFromUrl === 'affiliate' || typeFromUrl === 'crm' || typeFromUrl === 'inventory' || typeFromUrl === 'operations' || typeFromUrl === 'quickview' || typeFromUrl === 'ads' || typeFromUrl === 'bd-overview' || typeFromUrl === 'bd-ecommerce' || typeFromUrl === 'bd-distributor' || typeFromUrl === 'bd-distributor-sales' || typeFromUrl === 'bd-distributor-account' || typeFromUrl === 'bd-distributor-coverage' || typeFromUrl === 'bd-distributor-cost' || typeFromUrl === 'bd-event' || typeFromUrl === 'bd-event-sales' || typeFromUrl === 'bd-event-product' || typeFromUrl === 'bd-event-promotion' || typeFromUrl === 'bd-event-cost' || typeFromUrl === 'bd-ecommerce-my' || typeFromUrl === 'offline-quick-overview' || typeFromUrl === 'offline-mt' || typeFromUrl === 'offline-area-sales' || typeFromUrl === 'offline-store-overview' || typeFromUrl === 'offline-store-promotion' || typeFromUrl === 'offline-store-stock' || typeFromUrl === 'offline-store-cost') ? 'border-b border-gray-200' : 'border-b-4 border-indigo-600'}`}>
+                <header className={`flex justify-between items-center h-16 px-6 bg-white ${(typeFromUrl === 'orders' || typeFromUrl === 'performance' || typeFromUrl === 'livestreaming' || typeFromUrl === 'affiliate' || typeFromUrl === 'crm' || typeFromUrl === 'inventory' || typeFromUrl === 'operations' || typeFromUrl === 'quickview' || typeFromUrl === 'ads' || typeFromUrl === 'bd-overview' || typeFromUrl === 'bd-ecommerce' || typeFromUrl === 'bd-distributor' || typeFromUrl === 'bd-distributor-sales' || typeFromUrl === 'bd-distributor-account' || typeFromUrl === 'bd-distributor-coverage' || typeFromUrl === 'bd-distributor-cost' || typeFromUrl === 'bd-event' || typeFromUrl === 'bd-event-sales' || typeFromUrl === 'bd-event-product' || typeFromUrl === 'bd-event-promotion' || typeFromUrl === 'bd-event-cost' || typeFromUrl === 'bd-ecommerce-my' || typeFromUrl === 'mt-overview' || typeFromUrl === 'mt-distribution-coverage' || typeFromUrl === 'mt-cost-per-channel' || typeFromUrl === 'offline-quick-overview' || typeFromUrl === 'offline-mt' || typeFromUrl === 'offline-area-sales' || typeFromUrl === 'offline-store-overview' || typeFromUrl === 'offline-store-promotion' || typeFromUrl === 'offline-store-stock' || typeFromUrl === 'offline-store-cost' || typeFromUrl === 'gt-distributor-overview' || typeFromUrl === 'gt-distributor-sales' || typeFromUrl === 'gt-distributor-coverage' || typeFromUrl === 'gt-distributor-cost' || typeFromUrl === 'gt-reseller' || typeFromUrl === 'gt-reseller-overview' || typeFromUrl === 'gt-reseller-performance' || typeFromUrl === 'gt-reseller-coverage' || typeFromUrl === 'gt-reseller-cost' || typeFromUrl === 'sales-area-overview' || typeFromUrl === 'sales-area-performance' || typeFromUrl === 'sales-area-stock' || typeFromUrl === 'overview-all-channel') ? 'border-b border-gray-200' : 'border-b-4 border-indigo-600'}`}>
                     <div className="flex items-center">
                         <button 
                             onClick={() => setIsSidebarOpen(!isSidebarOpen)}
@@ -139,7 +156,7 @@ export default function SalesForm() {
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16M4 18h16" />
                             </svg>
                         </button>
-                        {typeFromUrl !== 'orders' && typeFromUrl !== 'performance' && typeFromUrl !== 'livestreaming' && typeFromUrl !== 'affiliate' && typeFromUrl !== 'crm' && typeFromUrl !== 'inventory' && typeFromUrl !== 'operations' && typeFromUrl !== 'quickview' && typeFromUrl !== 'ads' && typeFromUrl !== 'bd-overview' && typeFromUrl !== 'bd-ecommerce' && typeFromUrl !== 'bd-distributor' && typeFromUrl !== 'bd-distributor-sales' && typeFromUrl !== 'bd-distributor-account' && typeFromUrl !== 'bd-distributor-coverage' && typeFromUrl !== 'bd-distributor-cost' && typeFromUrl !== 'bd-event' && typeFromUrl !== 'bd-event-sales' && typeFromUrl !== 'bd-event-product' && typeFromUrl !== 'bd-event-promotion' && typeFromUrl !== 'bd-event-cost' && typeFromUrl !== 'bd-ecommerce-my' && typeFromUrl !== 'offline-quick-overview' && typeFromUrl !== 'offline-mt' && typeFromUrl !== 'offline-area-sales' && typeFromUrl !== 'offline-store-overview' && typeFromUrl !== 'offline-store-promotion' && typeFromUrl !== 'offline-store-stock' && typeFromUrl !== 'offline-store-cost' && <h1 className="text-2xl font-semibold text-gray-800">Sales Entry</h1>}
+                        {typeFromUrl !== 'orders' && typeFromUrl !== 'performance' && typeFromUrl !== 'livestreaming' && typeFromUrl !== 'affiliate' && typeFromUrl !== 'crm' && typeFromUrl !== 'inventory' && typeFromUrl !== 'operations' && typeFromUrl !== 'quickview' && typeFromUrl !== 'ads' && typeFromUrl !== 'bd-overview' && typeFromUrl !== 'bd-ecommerce' && typeFromUrl !== 'bd-distributor' && typeFromUrl !== 'bd-distributor-sales' && typeFromUrl !== 'bd-distributor-account' && typeFromUrl !== 'bd-distributor-coverage' && typeFromUrl !== 'bd-distributor-cost' && typeFromUrl !== 'bd-event' && typeFromUrl !== 'bd-event-sales' && typeFromUrl !== 'bd-event-product' && typeFromUrl !== 'bd-event-promotion' && typeFromUrl !== 'bd-event-cost' && typeFromUrl !== 'bd-ecommerce-my' && typeFromUrl !== 'offline-quick-overview' && typeFromUrl !== 'offline-mt' && typeFromUrl !== 'offline-area-sales' && typeFromUrl !== 'offline-store-overview' && typeFromUrl !== 'offline-store-promotion' && typeFromUrl !== 'offline-store-stock' && typeFromUrl !== 'offline-store-cost' && typeFromUrl !== 'gt-distributor' && typeFromUrl !== 'gt-reseller' && typeFromUrl !== 'gt-distributor-overview' && typeFromUrl !== 'gt-distributor-sales' && typeFromUrl !== 'gt-distributor-coverage' && typeFromUrl !== 'gt-distributor-cost' && typeFromUrl !== 'gt-reseller' && typeFromUrl !== 'gt-reseller-overview' && typeFromUrl !== 'gt-reseller-performance' && typeFromUrl !== 'gt-reseller-coverage' && typeFromUrl !== 'gt-reseller-cost' && typeFromUrl !== 'mt-overview' && typeFromUrl !== 'mt-distribution-coverage' && typeFromUrl !== 'mt-cost-per-channel' && typeFromUrl !== 'sales-area-overview' && typeFromUrl !== 'sales-area-performance' && typeFromUrl !== 'sales-area-stock' && typeFromUrl !== 'overview-all-channel' && <h1 className="text-2xl font-semibold text-gray-800">Sales Entry</h1>}
                     </div>
                 </header>
                 
@@ -191,12 +208,24 @@ export default function SalesForm() {
                     <LiveStreamingView />
                 ) : typeFromUrl === 'bd-affiliate-my' ? (
                     <AffiliateView />
+                ) : typeFromUrl === 'mt-overview' ? (
+                    <MTOverview />
+                ) : typeFromUrl === 'mt-distribution-coverage' ? (
+                    <MTDistributionCoverage />
+                ) : typeFromUrl === 'mt-cost-per-channel' ? (
+                    <MTCostPerChannel />
                 ) : typeFromUrl === 'offline-quick-overview' ? (
-                    <QuickView />
+                    <OfflineSalesOverview />
                 ) : typeFromUrl === 'offline-mt' ? (
                     <BDOfflineDistributor />
-                ) : typeFromUrl === 'offline-area-sales' ? (
-                    <BDDistributorCoverage />
+                ) : typeFromUrl === 'sales-area-overview' ? (
+                    <SalesAreaOverview />
+                ) : typeFromUrl === 'sales-area-performance' ? (
+                    <SalesAreaPerformance />
+                ) : typeFromUrl === 'sales-area-stock' ? (
+                    <SalesAreaStock />
+                ) : typeFromUrl === 'overview-all-channel' ? (
+                    <OverviewAllChannel />
                 ) : typeFromUrl === 'offline-store-overview' ? (
                     <OfficialStoreOverview />
                 ) : typeFromUrl === 'offline-store-promotion' ? (
@@ -205,6 +234,24 @@ export default function SalesForm() {
                     <OfficialStoreStock />
                 ) : typeFromUrl === 'offline-store-cost' ? (
                     <OfficialStoreCost />
+                ) : typeFromUrl === 'gt-distributor-overview' ? (
+                    <GTDistributorOverview />
+                ) : typeFromUrl === 'gt-distributor-sales' ? (
+                    <GTDistributorSales />
+                ) : typeFromUrl === 'gt-distributor-coverage' ? (
+                    <GTDistributorCoverage />
+                ) : typeFromUrl === 'gt-distributor-cost' ? (
+                    <GTDistributorCost />
+                ) : typeFromUrl === 'gt-reseller' ? (
+                    <GTReseller />
+                ) : typeFromUrl === 'gt-reseller-overview' ? (
+                    <GTResellerOverview />
+                ) : typeFromUrl === 'gt-reseller-performance' ? (
+                    <GTResellerPerformance />
+                ) : typeFromUrl === 'gt-reseller-coverage' ? (
+                    <GTResellerCoverage />
+                ) : typeFromUrl === 'gt-reseller-cost' ? (
+                    <GTResellerCost />
                 ) : (
                     <main className="flex-1 overflow-x-hidden overflow-y-auto bg-gray-200">
                         <div className="container mx-auto px-6 py-8">

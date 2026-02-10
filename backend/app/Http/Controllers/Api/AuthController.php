@@ -26,6 +26,10 @@ class AuthController extends Controller
         }
 
         $tokenName = $credentials['device_name'] ?? 'api';
+        
+        // Optimize: Remove old tokens for the same device/name to keep the table clean and fast
+        $user->tokens()->where('name', $tokenName)->delete();
+        
         $token = $user->createToken($tokenName)->plainTextToken;
 
         return response()->json([
