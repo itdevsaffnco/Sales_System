@@ -33,5 +33,24 @@ class DatabaseSeeder extends Seeder
                 'role' => 'sales_staff',
             ]
         );
+
+        $algi = User::query()->where('email', 'algi@sales.local')->first();
+        if ($algi) {
+            $algi->update([
+                'email' => 'admin@sales.local',
+                'name' => 'Admin',
+                'password' => Hash::make('password123'),
+                'role' => 'admin',
+            ]);
+        } else {
+            User::query()->updateOrCreate(
+                ['email' => 'admin@sales.local'],
+                [
+                    'name' => 'Admin',
+                    'password' => Hash::make('password123'),
+                    'role' => 'admin',
+                ]
+            );
+        }
     }
 }

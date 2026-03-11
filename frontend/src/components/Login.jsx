@@ -18,12 +18,7 @@ export default function Login() {
             const response = await api.post('/login', { email, password });
             localStorage.setItem('token', response.data.token);
             localStorage.setItem('role', response.data.user.role);
-            
-            if (response.data.user.role === 'sales_manager') {
-                navigate('/dashboard');
-            } else {
-                navigate('/sales');
-            }
+            navigate('/sales?type=overview-all-channel');
         } catch (err) {
             setError('Invalid credentials. Please try again.');
         } finally {

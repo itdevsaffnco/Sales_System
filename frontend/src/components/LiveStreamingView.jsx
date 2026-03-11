@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
+import { AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer, Legend } from 'recharts';
 import { format } from 'date-fns';
 import DateRangePicker from './DateRangePicker';
 
@@ -51,12 +51,11 @@ export default function LiveStreamingView() {
             <h1 className="text-3xl font-bold text-gray-900 mb-6">Live Streaming {channel}</h1>
             
             <div className="flex flex-col lg:flex-row gap-6 mb-8">
-                {/* Left Column: Charts */}
-                <div className="flex-1 flex flex-col gap-6">
-                    {/* GMV Chart */}
+                {/* Left Column: Chart */}
+                <div className="flex-1">
                     <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
-                        <h3 className="text-lg font-bold text-gray-800 mb-4">GMV</h3>
-                        <div className="h-64">
+                        <h3 className="text-lg font-bold text-gray-800 mb-4">GMV & Total Visitor</h3>
+                        <div className="h-80">
                             <ResponsiveContainer width="100%" height="100%">
                                 <AreaChart data={chartData}>
                                     <defs>
@@ -64,27 +63,6 @@ export default function LiveStreamingView() {
                                             <stop offset="5%" stopColor="#4F46E5" stopOpacity={0.1}/>
                                             <stop offset="95%" stopColor="#4F46E5" stopOpacity={0}/>
                                         </linearGradient>
-                                    </defs>
-                                    <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#E5E7EB" />
-                                    <XAxis dataKey="name" axisLine={false} tickLine={false} tick={{fill: '#6B7280', fontSize: 12}} dy={10} />
-                                    <YAxis axisLine={false} tickLine={false} tick={{fill: '#6B7280', fontSize: 12}} />
-                                    <Tooltip 
-                                        contentStyle={{backgroundColor: '#fff', borderRadius: '8px', border: '1px solid #E5E7EB', boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)'}}
-                                        itemStyle={{color: '#4F46E5'}}
-                                    />
-                                    <Area type="monotone" dataKey="gmv" stroke="#4F46E5" strokeWidth={2} fillOpacity={1} fill="url(#colorGmv)" />
-                                </AreaChart>
-                            </ResponsiveContainer>
-                        </div>
-                    </div>
-
-                    {/* Total Visitor Chart */}
-                    <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
-                        <h3 className="text-lg font-bold text-gray-800 mb-4">Total Visitor</h3>
-                        <div className="h-64">
-                            <ResponsiveContainer width="100%" height="100%">
-                                <AreaChart data={chartData}>
-                                    <defs>
                                         <linearGradient id="colorVisitor" x1="0" y1="0" x2="0" y2="1">
                                             <stop offset="5%" stopColor="#10B981" stopOpacity={0.1}/>
                                             <stop offset="95%" stopColor="#10B981" stopOpacity={0}/>
@@ -93,11 +71,10 @@ export default function LiveStreamingView() {
                                     <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#E5E7EB" />
                                     <XAxis dataKey="name" axisLine={false} tickLine={false} tick={{fill: '#6B7280', fontSize: 12}} dy={10} />
                                     <YAxis axisLine={false} tickLine={false} tick={{fill: '#6B7280', fontSize: 12}} />
-                                    <Tooltip 
-                                        contentStyle={{backgroundColor: '#fff', borderRadius: '8px', border: '1px solid #E5E7EB', boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)'}}
-                                        itemStyle={{color: '#10B981'}}
-                                    />
-                                    <Area type="monotone" dataKey="visitors" stroke="#10B981" strokeWidth={2} fillOpacity={1} fill="url(#colorVisitor)" />
+                                    <Tooltip contentStyle={{backgroundColor: '#fff', borderRadius: '8px', border: '1px solid #E5E7EB', boxShadow: '0 4px 6px -1px rgba(0, 0, 0, 0.1)'}} />
+                                    <Legend />
+                                    <Area type="monotone" dataKey="gmv" name="GMV" stroke="#4F46E5" strokeWidth={2} fillOpacity={1} fill="url(#colorGmv)" />
+                                    <Area type="monotone" dataKey="visitors" name="Visitors" stroke="#10B981" strokeWidth={2} fillOpacity={1} fill="url(#colorVisitor)" />
                                 </AreaChart>
                             </ResponsiveContainer>
                         </div>

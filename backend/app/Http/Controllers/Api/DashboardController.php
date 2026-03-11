@@ -12,7 +12,7 @@ class DashboardController extends Controller
     {
         $user = $request->user();
 
-        if ($user->role !== 'sales_manager') {
+        if (! in_array($user->role, ['sales_manager', 'admin'])) {
             abort(403);
         }
 
