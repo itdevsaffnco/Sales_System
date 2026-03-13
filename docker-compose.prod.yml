@@ -1,0 +1,25 @@
+services:
+  backend:
+    image: itsaffnco/saffnco_sales_system_backend_app:latest
+    container_name: saffnco_backend
+    restart: unless-stopped
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    ports:
+      - "8000:8000"
+    env_file:
+      - .env.backend
+    volumes:
+      - backend_storage:/var/www/storage
+
+  frontend:
+    image: itsaffnco/saffnco_sales_system_frontend_app:latest
+    container_name: saffnco_frontend
+    restart: unless-stopped
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+
+volumes:
+  backend_storage:
