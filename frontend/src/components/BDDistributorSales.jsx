@@ -107,7 +107,7 @@ export default function BDDistributorSales() {
                 </div>
                 
                 <div className="h-24 w-full mt-2">
-                     <ResponsiveContainer width="100%" height="100%">
+                     <ResponsiveContainer width="100%" height={300}>
                         <AreaChart data={data} margin={{ top: 0, right: 0, left: 0, bottom: 0 }}>
                             <defs>
                                 <linearGradient id={`gradient-${title.replace(/\s/g, '')}`} x1="0" y1="0" x2="0" y2="1">
@@ -238,7 +238,7 @@ export default function BDDistributorSales() {
                     <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
                         <h3 className="text-lg font-bold text-gray-800 mb-4">Monthly Sales vs Target</h3>
                         <div className="h-80">
-                            <ResponsiveContainer width="100%" height="100%">
+                            <ResponsiveContainer width="100%" height={300}>
                                 <ComposedChart data={growthTrend} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
                                     <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f0f0f0" />
                                     <XAxis dataKey="month" axisLine={false} tickLine={false} tick={{fill: '#6B7280', fontSize: 12}} dy={10} />
@@ -259,7 +259,7 @@ export default function BDDistributorSales() {
                     <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
                         <h3 className="text-lg font-bold text-gray-800 mb-4">Sales Value Contribution per Account</h3>
                         <div className="h-80">
-                            <ResponsiveContainer width="100%" height="100%">
+                            <ResponsiveContainer width="100%" height={300}>
                                 <BarChart data={salesPerAccount} layout="vertical" margin={{ top: 5, right: 30, left: 40, bottom: 5 }}>
                                     <CartesianGrid strokeDasharray="3 3" horizontal={true} vertical={false} stroke="#f0f0f0" />
                                     <XAxis type="number" hide />
@@ -282,7 +282,7 @@ export default function BDDistributorSales() {
                     <div className="col-span-1 lg:col-span-2 bg-white p-6 rounded-xl shadow-sm border border-gray-100">
                         <h3 className="text-lg font-bold text-gray-800 mb-4">Monthly Sales Comparison per Distributor</h3>
                         <div className="h-80">
-                            <ResponsiveContainer width="100%" height="100%">
+                            <ResponsiveContainer width="100%" height={300}>
                                 <LineChart data={distributorComparison} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
                                     <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f0f0f0" />
                                     <XAxis dataKey="month" axisLine={false} tickLine={false} tick={{fill: '#6B7280', fontSize: 12}} dy={10} />

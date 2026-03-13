@@ -136,7 +136,7 @@ export default function BDOfflineEvent() {
                     <div className="bg-white p-6 rounded-lg shadow border border-gray-100">
                         <h3 className="text-lg font-semibold text-gray-800 mb-4">Performance by Event</h3>
                         <div className="h-72">
-                            <ResponsiveContainer width="100%" height="100%">
+                            <ResponsiveContainer width="100%" height={300}>
                                 <BarChart data={eventPerformance} layout="vertical" margin={{ top: 5, right: 30, left: 40, bottom: 5 }}>
                                     <CartesianGrid strokeDasharray="3 3" horizontal={false} />
                                     <XAxis type="number" tickFormatter={(value) => `${value / 1000000}M`} />
@@ -154,7 +154,7 @@ export default function BDOfflineEvent() {
                     <div className="bg-white p-6 rounded-lg shadow border border-gray-100">
                         <h3 className="text-lg font-semibold text-gray-800 mb-4">Daily Sales Trend (Last 7 Days)</h3>
                         <div className="h-72">
-                            <ResponsiveContainer width="100%" height="100%">
+                            <ResponsiveContainer width="100%" height={300}>
                                 <ComposedChart data={dailyTrend} margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
                                     <CartesianGrid strokeDasharray="3 3" vertical={false} />
                                     <XAxis dataKey="day" />

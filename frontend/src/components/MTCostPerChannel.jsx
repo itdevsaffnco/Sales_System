@@ -148,7 +148,7 @@ const MTCostPerChannel = () => {
                 <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
                     <h3 className="text-lg font-bold text-gray-800 mb-4">Cost Structure Breakdown (Value)</h3>
                     <div className="h-96">
-                        <ResponsiveContainer width="100%" height="100%">
+                        <ResponsiveContainer width="100%" height={300}>
                             <BarChart
                                 data={filteredCostData}
                                 margin={{ top: 20, right: 30, left: 20, bottom: 5 }}

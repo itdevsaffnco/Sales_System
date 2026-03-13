@@ -96,7 +96,7 @@ export default function SalesAreaOverview() {
                     <div className="bg-white p-6 rounded-lg shadow border border-gray-100">
                         <h3 className="text-lg font-semibold text-gray-800 mb-4">Sales by Area vs Target</h3>
                         <div className="h-80">
-                            <ResponsiveContainer width="100%" height="100%">
+                            <ResponsiveContainer width="100%" height={300}>
                                 <BarChart data={areaSalesData} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
                                     <CartesianGrid strokeDasharray="3 3" vertical={false} />
                                     <XAxis dataKey="area" />
@@ -113,7 +113,7 @@ export default function SalesAreaOverview() {
                     <div className="bg-white p-6 rounded-lg shadow border border-gray-100">
                         <h3 className="text-lg font-semibold text-gray-800 mb-4">Area Growth Trend</h3>
                         <div className="h-80">
-                            <ResponsiveContainer width="100%" height="100%">
+                            <ResponsiveContainer width="100%" height={300}>
                                 <LineChart data={growthTrendData} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
                                     <CartesianGrid strokeDasharray="3 3" vertical={false} />
                                     <XAxis dataKey="month" />

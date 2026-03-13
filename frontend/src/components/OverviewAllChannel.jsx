@@ -215,26 +215,30 @@ export default function OverviewAllChannel() {
                             {selectedCategory === 'All' ? 'Channel Category Distribution' : 'Channel Breakdown'}
                         </h3>
                         <div className="h-80">
-                            <ResponsiveContainer width="100%" height="100%">
-                                <PieChart>
-                                    <Pie
-                                        data={chartData.pieData}
-                                        cx="50%"
-                                        cy="50%"
-                                        labelLine={false}
-                                        label={({ name, percent }) => `${name} ${(percent * 100).toFixed(0)}%`}
-                                        outerRadius={80}
-                                        fill="#8884d8"
-                                        dataKey="value"
-                                    >
-                                        {chartData.pieData.map((entry, index) => (
-                                            <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
-                                        ))}
-                                    </Pie>
-                                    <Tooltip />
-                                    <Legend />
-                                </PieChart>
-                            </ResponsiveContainer>
+                            {chartData.pieData.length > 0 ? (
+                                <ResponsiveContainer width="100%" height={300}>
+                                    <PieChart>
+                                        <Pie
+                                            data={chartData.pieData}
+                                            cx="50%"
+                                            cy="50%"
+                                            labelLine={false}
+                                            label={({ name, percent }) => `${name} ${(percent * 100).toFixed(0)}%`}
+                                            outerRadius={80}
+                                            fill="#8884d8"
+                                            dataKey="value"
+                                        >
+                                            {chartData.pieData.map((entry, index) => (
+                                                <Cell key={`cell-${index}`} fill={COLORS[index % COLORS.length]} />
+                                            ))}
+                                        </Pie>
+                                        <Tooltip />
+                                        <Legend />
+                                    </PieChart>
+                                </ResponsiveContainer>
+                            ) : (
+                                <div className="flex items-center justify-center h-full text-gray-400">No data available</div>
+                            )}
                         </div>
                     </div>
 
@@ -242,19 +246,23 @@ export default function OverviewAllChannel() {
                     <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
                         <h3 className="text-lg font-bold text-gray-800 mb-6">Top 5 Channels (Volume)</h3>
                         <div className="h-80">
-                            <ResponsiveContainer width="100%" height="100%">
-                                <BarChart
-                                    data={chartData.barData}
-                                    layout="vertical"
-                                    margin={{ top: 5, right: 30, left: 40, bottom: 5 }}
-                                >
-                                    <CartesianGrid strokeDasharray="3 3" horizontal={false} />
-                                    <XAxis type="number" />
-                                    <YAxis type="category" dataKey="name" width={100} />
-                                    <Tooltip />
-                                    <Bar dataKey="entries" fill="#6366f1" radius={[0, 4, 4, 0]} />
-                                </BarChart>
-                            </ResponsiveContainer>
+                            {chartData.barData.length > 0 ? (
+                                <ResponsiveContainer width="100%" height={300}>
+                                    <BarChart
+                                        data={chartData.barData}
+                                        layout="vertical"
+                                        margin={{ top: 5, right: 30, left: 40, bottom: 5 }}
+                                    >
+                                        <CartesianGrid strokeDasharray="3 3" horizontal={false} />
+                                        <XAxis type="number" />
+                                        <YAxis type="category" dataKey="name" width={100} />
+                                        <Tooltip />
+                                        <Bar dataKey="entries" fill="#6366f1" radius={[0, 4, 4, 0]} />
+                                    </BarChart>
+                                </ResponsiveContainer>
+                            ) : (
+                                <div className="flex items-center justify-center h-full text-gray-400">No data available</div>
+                            )}
                         </div>
                     </div>
                 </div>
@@ -298,7 +306,7 @@ export default function OverviewAllChannel() {
                                 ))}
                                 {filteredData.length === 0 && (
                                     <tr>
-                                        <td colspan="4" className="px-6 py-8 text-center text-gray-500">
+                                        <td colSpan="4" className="px-6 py-8 text-center text-gray-500">
                                             No data available for selected filters
                                         </td>
                                     </tr>

@@ -136,7 +136,7 @@ export default function OfficialStoreStock() {
                 <div className="lg:col-span-2 bg-white p-6 rounded-xl shadow-sm border border-gray-200">
                     <h3 className="text-lg font-bold text-gray-900 mb-6">Stock Level per Store</h3>
                     <div className="h-80">
-                        <ResponsiveContainer width="100%" height="100%">
+                        <ResponsiveContainer width="100%" height={300}>
                             <BarChart data={stockData} layout="vertical" margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
                                 <CartesianGrid strokeDasharray="3 3" horizontal={true} vertical={false} />
                                 <XAxis type="number" hide />

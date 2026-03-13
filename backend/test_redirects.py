@@ -4,7 +4,7 @@ import urllib.request
 import http.cookiejar
 import urllib.error
 
-BASE = 'http://127.0.0.1:8000'
+BASE = 'http://127.0.0.1:8001'
 
 class NoRedirect(urllib.request.HTTPRedirectHandler):
     def redirect_request(self, req, fp, code, msg, headers, newurl):

@@ -246,7 +246,7 @@ const MTDistributionCoverage = () => {
                     <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
                         <h3 className="text-lg font-bold text-gray-800 mb-4">Overall Store Coverage</h3>
                         <div className="h-80 flex justify-center items-center">
-                            <ResponsiveContainer width="100%" height="100%">
+                            <ResponsiveContainer width="100%" height={300}>
                                 <PieChart>
                                     <Pie
                                         data={filteredCoverageData}
@@ -276,7 +276,7 @@ const MTDistributionCoverage = () => {
                     <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
                         <h3 className="text-lg font-bold text-gray-800 mb-4">Coverage by Account</h3>
                         <div className="h-80">
-                            <ResponsiveContainer width="100%" height="100%">
+                            <ResponsiveContainer width="100%" height={300}>
                                 <BarChart
                                     data={filteredCoverageByAccount}
                                     margin={{ top: 20, right: 30, left: 20, bottom: 5 }}

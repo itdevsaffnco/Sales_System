@@ -85,7 +85,7 @@ export default function SalesAreaPerformance() {
                     <div className="bg-white p-6 rounded-lg shadow border border-gray-100">
                         <h3 className="text-lg font-semibold text-gray-800 mb-4">Active Outlets (%)</h3>
                         <div className="h-64">
-                            <ResponsiveContainer width="100%" height="100%">
+                            <ResponsiveContainer width="100%" height={300}>
                                 <PieChart>
                                     <Pie
                                         data={activeOutletsData}
@@ -110,7 +110,7 @@ export default function SalesAreaPerformance() {
                     <div className="bg-white p-6 rounded-lg shadow border border-gray-100 lg:col-span-2">
                         <h3 className="text-lg font-semibold text-gray-800 mb-4">RO vs AO & NOO</h3>
                         <div className="h-64">
-                            <ResponsiveContainer width="100%" height="100%">
+                            <ResponsiveContainer width="100%" height={300}>
                                 <ComposedChart data={roVsAoData}>
                                     <CartesianGrid strokeDasharray="3 3" />
                                     <XAxis dataKey="month" />

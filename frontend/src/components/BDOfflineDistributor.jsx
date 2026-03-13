@@ -137,7 +137,7 @@ export default function BDOfflineDistributor() {
                     <div className="bg-white p-6 rounded-lg shadow border border-gray-100 lg:col-span-2">
                         <h3 className="text-lg font-semibold text-gray-800 mb-4">Sales Trend vs Target (Millions)</h3>
                         <div className="h-72">
-                            <ResponsiveContainer width="100%" height="100%">
+                            <ResponsiveContainer width="100%" height={300}>
                                 <LineChart data={growthTrend} margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
                                     <CartesianGrid strokeDasharray="3 3" vertical={false} />
                                     <XAxis dataKey="month" />

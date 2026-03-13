@@ -170,7 +170,7 @@ export default function InventoryHealthView() {
                 <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-200 lg:col-span-1">
                     <h3 className="text-lg font-bold text-gray-800 mb-4">Inventory Health Distribution</h3>
                     <div className="h-64 flex justify-center items-center">
-                         <ResponsiveContainer width="100%" height="100%">
+                         <ResponsiveContainer width="100%" height={300}>
                             <PieChart>
                                 <Pie
                                     data={distributionData}

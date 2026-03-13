@@ -158,7 +158,7 @@ export default function OperationsHealthView() {
                 <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
                     <h3 className="text-lg font-bold text-gray-800 mb-4">Refund Rate Monthly Analysis</h3>
                     <div className="h-80">
-                        <ResponsiveContainer width="100%" height="100%">
+                        <ResponsiveContainer width="100%" height={300}>
                             <ComposedChart data={refundTrendData}>
                                 <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#E5E7EB" />
                                 <XAxis dataKey="month" axisLine={false} tickLine={false} tick={{fill: '#6B7280', fontSize: 12}} dy={10} />
@@ -181,7 +181,7 @@ export default function OperationsHealthView() {
                 <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
                     <h3 className="text-lg font-bold text-gray-800 mb-4">SLA & Delivery Performance (Weekly)</h3>
                     <div className="h-80">
-                         <ResponsiveContainer width="100%" height="100%">
+                         <ResponsiveContainer width="100%" height={300}>
                             <BarChart data={fulfillmentData} stacked>
                                 <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#E5E7EB" />
                                 <XAxis dataKey="name" axisLine={false} tickLine={false} tick={{fill: '#6B7280', fontSize: 12}} dy={10} />

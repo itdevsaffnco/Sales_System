@@ -162,7 +162,7 @@ export default function BDEventPromotion() {
                 <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100 mb-8">
                     <h3 className="text-lg font-bold text-gray-800 mb-4">Promotional Value Trend {selectedEventId !== 'all' ? `- ${currentData.name}` : ''}</h3>
                     <div className="h-80">
-                        <ResponsiveContainer width="100%" height="100%">
+                        <ResponsiveContainer width="100%" height={300}>
                             <AreaChart data={currentData.trend || []} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
                                 <defs>
                                     <linearGradient id="colorValue" x1="0" y1="0" x2="0" y2="1">

@@ -131,7 +131,7 @@ export default function BDEcommerce() {
                     <div className="bg-white p-6 rounded-lg shadow border border-gray-100">
                         <h3 className="text-lg font-semibold text-gray-800 mb-4">Target vs Achievement by Platform</h3>
                         <div className="h-64">
-                            <ResponsiveContainer width="100%" height="100%">
+                            <ResponsiveContainer width="100%" height={300}>
                                 <BarChart data={platformPerformance} layout="vertical" margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
                                     <CartesianGrid strokeDasharray="3 3" horizontal={false} />
                                     <XAxis type="number" tickFormatter={(value) => `${value / 1000000}M`} />
@@ -149,7 +149,7 @@ export default function BDEcommerce() {
                     <div className="bg-white p-6 rounded-lg shadow border border-gray-100">
                         <h3 className="text-lg font-semibold text-gray-800 mb-4">Traffic Source & Conversion Rate</h3>
                         <div className="h-64">
-                            <ResponsiveContainer width="100%" height="100%">
+                            <ResponsiveContainer width="100%" height={300}>
                                 <BarChart data={trafficData} margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
                                     <CartesianGrid strokeDasharray="3 3" vertical={false} />
                                     <XAxis dataKey="source" />

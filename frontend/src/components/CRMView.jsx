@@ -150,7 +150,7 @@ export default function CRMView() {
                 <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-200 col-span-1 md:col-span-2 h-80">
                     <h3 className="text-lg font-bold text-gray-800 mb-4">Customer Growth (New vs Repeat)</h3>
                     <div className="h-64">
-                        <ResponsiveContainer width="100%" height="100%">
+                        <ResponsiveContainer width="100%" height={300}>
                             <ComposedChart data={chartData}>
                                 <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#E5E7EB" />
                                 <XAxis dataKey="name" axisLine={false} tickLine={false} tick={{fill: '#6B7280', fontSize: 12}} dy={10} />
@@ -172,7 +172,7 @@ export default function CRMView() {
                 <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-200 col-span-1 md:col-span-2 h-80">
                     <h3 className="text-lg font-bold text-gray-800 mb-4">Customer Growth (Per Channel)</h3>
                     <div className="h-64">
-                        <ResponsiveContainer width="100%" height="100%">
+                        <ResponsiveContainer width="100%" height={300}>
                             <ComposedChart data={buildPerChannelSeries(channelGrowthData)}>
                                 <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#E5E7EB" />
                                 <XAxis dataKey="name" axisLine={false} tickLine={false} tick={{fill: '#6B7280', fontSize: 12}} dy={10} />
@@ -195,7 +195,7 @@ export default function CRMView() {
                 <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-200 col-span-1 h-80">
                     <h3 className="text-lg font-bold text-gray-800 mb-4">Customer Composition</h3>
                     <div className="h-64">
-                        <ResponsiveContainer width="100%" height="100%">
+                        <ResponsiveContainer width="100%" height={300}>
                             <PieChart>
                                 <Pie
                                     data={customerCompositionData}

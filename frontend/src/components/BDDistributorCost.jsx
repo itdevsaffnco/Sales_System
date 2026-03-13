@@ -177,7 +177,7 @@ export default function BDDistributorCost() {
                     <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
                         <h3 className="text-lg font-bold text-gray-800 mb-4">Investment Breakdown</h3>
                         <div className="h-80 flex items-center justify-center">
-                            <ResponsiveContainer width="100%" height="100%">
+                            <ResponsiveContainer width="100%" height={300}>
                                 <PieChart>
                                     <Pie
                                         data={costBreakdown}
@@ -203,7 +203,7 @@ export default function BDDistributorCost() {
                     <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
                         <h3 className="text-lg font-bold text-gray-800 mb-4">Cost vs Sales Ratio by Account</h3>
                         <div className="h-80">
-                            <ResponsiveContainer width="100%" height="100%">
+                            <ResponsiveContainer width="100%" height={300}>
                                 <BarChart data={costPerAccount} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
                                     <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f0f0f0" />
                                     <XAxis dataKey="account" axisLine={false} tickLine={false} tick={{fill: '#6B7280', fontSize: 10}} interval={0} />
@@ -231,7 +231,7 @@ export default function BDDistributorCost() {
                         </div>
                     </div>
                     <div className="h-80">
-                        <ResponsiveContainer width="100%" height="100%">
+                        <ResponsiveContainer width="100%" height={300}>
                             <ComposedChart data={monthlyTrend} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
                                 <CartesianGrid strokeDasharray="3 3" vertical={false} stroke="#f0f0f0" />
                                 <XAxis dataKey="month" axisLine={false} tickLine={false} tick={{fill: '#6B7280', fontSize: 12}} />

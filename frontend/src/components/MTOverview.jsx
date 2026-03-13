@@ -87,7 +87,7 @@ const MTOverview = () => {
                 </div>
                 
                 <div className="h-16 w-full">
-                    <ResponsiveContainer width="100%" height="100%">
+                    <ResponsiveContainer width="100%" height={300}>
                         <AreaChart data={data}>
                             <defs>
                                 <linearGradient id={`gradient-${dataKey}`} x1="0" y1="0" x2="0" y2="1">
@@ -242,7 +242,7 @@ const MTOverview = () => {
                     <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
                         <h3 className="text-lg font-bold text-gray-800 mb-4">Sales Value per Account</h3>
                         <div className="h-80">
-                            <ResponsiveContainer width="100%" height="100%">
+                            <ResponsiveContainer width="100%" height={300}>
                                 <BarChart data={filteredSalesValueData} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
                                     <CartesianGrid strokeDasharray="3 3" vertical={false} />
                                     <XAxis dataKey="account" axisLine={false} tickLine={false} />
@@ -259,7 +259,7 @@ const MTOverview = () => {
                     <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
                         <h3 className="text-lg font-bold text-gray-800 mb-4">Gap Sales (Actual vs Target)</h3>
                         <div className="h-80">
-                            <ResponsiveContainer width="100%" height="100%">
+                            <ResponsiveContainer width="100%" height={300}>
                                 <BarChart data={filteredGapSalesData} layout="vertical" margin={{ top: 20, right: 30, left: 40, bottom: 5 }}>
                                     <CartesianGrid strokeDasharray="3 3" horizontal={false} />
                                     <XAxis type="number" hide />

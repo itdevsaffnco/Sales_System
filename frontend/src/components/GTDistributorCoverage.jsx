@@ -126,7 +126,7 @@ export default function GTDistributorCoverage() {
                     <div className="bg-white p-6 rounded-lg shadow border border-gray-100">
                         <h3 className="text-lg font-semibold text-gray-800 mb-4">Coverage Status</h3>
                         <div className="h-64 flex justify-center items-center">
-                            <ResponsiveContainer width="100%" height="100%">
+                            <ResponsiveContainer width="100%" height={300}>
                                 <PieChart>
                                     <Pie
                                         data={aoVsRoData}
@@ -156,7 +156,7 @@ export default function GTDistributorCoverage() {
                     <div className="bg-white p-6 rounded-lg shadow border border-gray-100 lg:col-span-2">
                         <h3 className="text-lg font-semibold text-gray-800 mb-4">Outlet Status by Distributor</h3>
                         <div className="h-72">
-                            <ResponsiveContainer width="100%" height="100%">
+                            <ResponsiveContainer width="100%" height={300}>
                                 <BarChart data={coverageByDistributor} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
                                     <CartesianGrid strokeDasharray="3 3" vertical={false} />
                                     <XAxis dataKey="name" tickFormatter={(val) => val.replace('GT Distributor ', 'Dist ')} />

@@ -92,7 +92,7 @@ export default function SalesAreaStock() {
                     <div className="bg-white p-6 rounded-lg shadow border border-gray-100">
                         <h3 className="text-lg font-semibold text-gray-800 mb-4">Stock on Hand per Channel</h3>
                         <div className="h-80">
-                            <ResponsiveContainer width="100%" height="100%">
+                            <ResponsiveContainer width="100%" height={300}>
                                 <BarChart data={stockOnHandData} layout="vertical" margin={{ top: 5, right: 30, left: 40, bottom: 5 }}>
                                     <CartesianGrid strokeDasharray="3 3" horizontal={true} vertical={false} />
                                     <XAxis type="number" />
@@ -110,7 +110,7 @@ export default function SalesAreaStock() {
                     <div className="bg-white p-6 rounded-lg shadow border border-gray-100">
                         <h3 className="text-lg font-semibold text-gray-800 mb-4">Return & Aging Stock</h3>
                         <div className="h-80">
-                            <ResponsiveContainer width="100%" height="100%">
+                            <ResponsiveContainer width="100%" height={300}>
                                 <BarChart data={agingStockData}>
                                     <CartesianGrid strokeDasharray="3 3" />
                                     <XAxis dataKey="area" />

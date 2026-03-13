@@ -260,7 +260,7 @@ export default function BDOverview() {
                             </div>
                         </div>
                         <div className="h-80">
-                            <ResponsiveContainer width="100%" height="100%">
+                            <ResponsiveContainer width="100%" height={300}>
                                 <AreaChart data={monthlyTrendData} margin={{ top: 10, right: 30, left: 0, bottom: 0 }}>
                                     <defs>
                                         <linearGradient id="colorGmv" x1="0" y1="0" x2="0" y2="1">
@@ -289,7 +289,7 @@ export default function BDOverview() {
                      <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
                         <h3 className="text-lg font-bold text-gray-800 mb-6">Channel Contribution</h3>
                         <div className="h-64">
-                            <ResponsiveContainer width="100%" height="100%">
+                            <ResponsiveContainer width="100%" height={240}>
                                 <PieChart>
                                     <Pie
                                         data={channelContributionData}

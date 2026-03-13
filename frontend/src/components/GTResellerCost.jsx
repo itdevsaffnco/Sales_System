@@ -69,7 +69,7 @@ export default function GTResellerCost() {
                 <div className="bg-white p-6 rounded-lg shadow border border-gray-100">
                     <h3 className="text-lg font-semibold text-gray-800 mb-4">Cost Structure per Reseller</h3>
                     <div className="h-96">
-                        <ResponsiveContainer width="100%" height="100%">
+                        <ResponsiveContainer width="100%" height={300}>
                             <BarChart data={costData} margin={{ top: 20, right: 30, left: 40, bottom: 5 }}>
                                 <CartesianGrid strokeDasharray="3 3" vertical={false} />
                                 <XAxis dataKey="channel" />

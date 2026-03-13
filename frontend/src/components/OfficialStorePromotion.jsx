@@ -224,7 +224,7 @@ export default function OfficialStorePromotion() {
             <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-200 mb-8">
                 <h3 className="text-lg font-bold text-gray-900 mb-6">Traffic vs Conversion Trend</h3>
                 <div className="h-80">
-                    <ResponsiveContainer width="100%" height="100%">
+                    <ResponsiveContainer width="100%" height={300}>
                         <LineChart data={chartData} margin={{ top: 5, right: 30, left: 20, bottom: 5 }}>
                             <CartesianGrid strokeDasharray="3 3" vertical={false} />
                             <XAxis dataKey="date" />

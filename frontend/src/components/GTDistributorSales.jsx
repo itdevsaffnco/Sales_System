@@ -85,7 +85,7 @@ export default function GTDistributorSales() {
                 <div className="bg-white p-6 rounded-lg shadow border border-gray-100 mb-8">
                     <h3 className="text-lg font-semibold text-gray-800 mb-4">Sales vs Target per Distributor</h3>
                     <div className="h-80">
-                        <ResponsiveContainer width="100%" height="100%">
+                        <ResponsiveContainer width="100%" height={300}>
                             <BarChart data={accountPerformance} margin={{ top: 20, right: 30, left: 20, bottom: 5 }}>
                                 <CartesianGrid strokeDasharray="3 3" vertical={false} />
                                 <XAxis dataKey="account" tickFormatter={(val) => val.replace('GT Distributor ', 'Dist ')} />

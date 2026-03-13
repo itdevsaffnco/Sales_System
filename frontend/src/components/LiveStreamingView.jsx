@@ -56,7 +56,7 @@ export default function LiveStreamingView() {
                     <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-200">
                         <h3 className="text-lg font-bold text-gray-800 mb-4">GMV & Total Visitor</h3>
                         <div className="h-80">
-                            <ResponsiveContainer width="100%" height="100%">
+                            <ResponsiveContainer width="100%" height={300}>
                                 <AreaChart data={chartData}>
                                     <defs>
                                         <linearGradient id="colorGmv" x1="0" y1="0" x2="0" y2="1">
