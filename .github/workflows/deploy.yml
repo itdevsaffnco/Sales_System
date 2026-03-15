@@ -96,8 +96,5 @@ jobs:
               -p 9800:80 \
               ${{ env.FRONTEND_IMAGE }}:latest
 
-            # Run migrations
-            docker exec saffnco_system_sales_backend php artisan migrate --force
-
             # Cleanup old images
             docker image prune -f
