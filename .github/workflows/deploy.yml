@@ -65,30 +65,29 @@ jobs:
           script: |
             # Login to Docker Hub
             echo "${{ secrets.DOCKERHUB_TOKEN }}" | docker login -u "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
-            
+
             # Pull latest images
             docker pull ${{ env.BACKEND_IMAGE }}:latest
             docker pull ${{ env.FRONTEND_IMAGE }}:latest
-            
+
             # Write .env.backend from secret
             mkdir -p ~/sales-system
             echo "$BACKEND_ENV" > ~/sales-system/.env.backend
-            
+
             # Stop & remove existing containers
             docker stop saffnco_system_sales_backend saffnco_system_sales_frontend 2>/dev/null || true
             docker rm saffnco_system_sales_backend saffnco_system_sales_frontend 2>/dev/null || true
-            
+
             # Run backend container
             docker run -d \
               --name saffnco_system_sales_backend \
               --restart unless-stopped \
               --network sales-network \
-              --add-host=host.docker.internal:host-gateway \
               -p 8900:8000 \
               --env-file ~/sales-system/.env.backend \
               -v saffnco_backend_storage:/var/www/storage \
               ${{ env.BACKEND_IMAGE }}:latest
-            
+
             # Run frontend container
             docker run -d \
               --name saffnco_system_sales_frontend \
@@ -96,9 +95,9 @@ jobs:
               --network sales-network \
               -p 9800:80 \
               ${{ env.FRONTEND_IMAGE }}:latest
-            
+
             # Run migrations
             docker exec saffnco_system_sales_backend php artisan migrate --force
-            
+
             # Cleanup old images
             docker image prune -f
