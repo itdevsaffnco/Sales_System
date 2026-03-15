@@ -1,5 +1,5 @@
 import axios from 'axios';
-const defaultBase = 'http://127.0.0.1:8001/api';
+const defaultBase = import.meta.env.VITE_API_BASE_URL || 'https://server-sales.saffnco.app/api';
 const storedBase = (typeof localStorage !== 'undefined' && localStorage.getItem('api_base_url')) || defaultBase;
 const api = axios.create({
     baseURL: storedBase,
