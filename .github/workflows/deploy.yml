@@ -84,7 +84,7 @@ jobs:
               --restart unless-stopped \
               --network sales-network \
               --add-host=host.docker.internal:host-gateway \
-              -p 8000:8000 \
+              -p 8900:8000 \
               --env-file ~/sales-system/.env.backend \
               -v saffnco_backend_storage:/var/www/storage \
               ${{ env.BACKEND_IMAGE }}:latest
