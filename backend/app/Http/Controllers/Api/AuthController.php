@@ -19,9 +19,15 @@ class AuthController extends Controller
 
         $user = \App\Models\User::query()->where('email', $credentials['email'])->first();
 
-        if (! $user || ! Hash::check($credentials['password'], $user->password)) {
+        if (! $user) {
             throw ValidationException::withMessages([
-                'email' => ['Email atau password salah.'],
+                'email' => ['Akun dengan email ini tidak ditemukan.'],
+            ]);
+        }
+
+        if (! Hash::check($credentials['password'], $user->password)) {
+            throw ValidationException::withMessages([
+                'email' => ['Password yang kamu masukkan salah.'],
             ]);
         }
 
